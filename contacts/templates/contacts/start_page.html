@@ -13,11 +13,11 @@
             align-items: center;
         }
         h1 {
-            color: blue;
+            color: rgb(0, 153, 255);
             margin: 20px 0;
         }
         .contact-button {
-            background-color: blue;
+            background-color: rgb(0, 153, 255);
             color: white;
             padding: 10px 20px;
             border: none;
@@ -39,7 +39,7 @@
             border: none;
         }
         .contacts-table tr:nth-child(even) {
-            background-color: lightgray;
+            background-color: rgb(171, 213, 241);
         }
         .contact-actions {
             text-align: center;
@@ -49,9 +49,8 @@
             bottom: 0;
             width: 100%;
             text-align: center;
-            padding: 10px 0;
-            background-color: #f3f3f3;
-            border-top: 1px solid #e7e7e7;
+            padding: 20px 0;
+            color:rgb(0, 153, 255)
         }
     </style>
 </head>
@@ -59,7 +58,6 @@
     <h1>Contact Management</h1>
     <a href="{% url 'create_contact' %}" class="contact-button">Create a New Contact</a>
     
-    <!-- Contact list as a table starts here -->
     <table class="contacts-table">
         <thead>
             <tr>
@@ -81,11 +79,10 @@
                 </td>
             </tr>
             {% empty %}
-            <tr><td colspan="4">No contacts found.</td></tr>
+            <tr><td colspan="4">No contacts.</td></tr>
             {% endfor %}
         </tbody>
     </table>
-    <!-- Contact list as a table ends here -->
     
     <div class="footer">
         ©Created by Jayden Alvarez

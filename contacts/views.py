@@ -35,6 +35,8 @@ def edit_contact(request, pk):
         if form.is_valid():
             form.save()
             return redirect(reverse('contact_details', kwargs={'pk': contact.pk}))
+        else:
+            print(form.errors)
     else:
         form = ContactForm(instance=contact)
     return render(request, 'contacts/edit_contact.html', {'form': form, 'contact': contact})
