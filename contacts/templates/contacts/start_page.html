@@ -27,15 +27,22 @@
             text-decoration: none;
             display: inline-block;
         }
-        .contact-titles {
-            display: flex;
-            justify-content: space-between;
-            max-width: 600px;
+        .contacts-table {
             width: 100%;
-            margin-bottom: 10px;
+            max-width: 960px;
+            text-align: left;
+            border-collapse: collapse;
+            border: none;
         }
-        .contact-title {
-            font-weight: bold;
+        .contacts-table th, .contacts-table td {
+            padding: 8px;
+            border: none;
+        }
+        .contacts-table tr:nth-child(even) {
+            background-color: lightgray;
+        }
+        .contact-actions {
+            text-align: center;
         }
         .footer {
             position: absolute;
@@ -51,12 +58,35 @@
 <body>
     <h1>Contact Management</h1>
     <a href="{% url 'create_contact' %}" class="contact-button">Create a New Contact</a>
-    <div class="contact-titles">
-        <span class="contact-title">Contact Name</span>
-        <span class="contact-title">Email</span>
-        <span class="contact-title">Created Time</span>
-    </div>
-    <!-- List of contacts will go here -->
+    
+    <!-- Contact list as a table starts here -->
+    <table class="contacts-table">
+        <thead>
+            <tr>
+                <th> </th>
+                <th>Contact Name</th>
+                <th>Email</th>
+                <th>Created Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td class="contact-actions">
+                    <a href="{% url 'contact_detail' pk=contact.pk %}">Details</a> | 
+                    <a href="{% url 'delete_contact' pk=contact.pk %}" onclick="return confirm('Are you sure?');">Delete</a>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.created_time }}</td>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">No contacts found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- Contact list as a table ends here -->
+    
     <div class="footer">
         ©Created by Jayden Alvarez
     </div>
