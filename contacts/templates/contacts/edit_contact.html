@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create a Contact</title>
+    <title>Update Contact</title>
     <style>
+        /* The styles are copied directly from create_contact.html for consistency */
         body, html {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -23,7 +24,7 @@
         input[type="text"],
         input[type="email"],
         textarea,
-        input[type="submit"]
+        input[type="submit"],
         .cancel {
             width: 100%;
             max-width: 400px;
@@ -48,13 +49,13 @@
         }
         input[type="submit"], .cancel {
             padding: 10px 20px;
-            font-size: inherit; 
-            cursor: pointer; 
-            background-color: blue; 
-            color: white;  
-            display: inline-block;  
-            text-align: center; 
-            line-height: normal; 
+            font-size: inherit;
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            display: inline-block;
+            text-align: center;
+            line-height: normal;
             margin-bottom: 15px;
             margin-right: 10px;
         }
@@ -67,10 +68,10 @@
             background-color: #f3f3f3;
             border-top: 1px solid #e7e7e7;
         }
-    </style>
+    </style>    
 </head>
 <body>
-    <h1>Create a Contact</h1>
+    <h1>Update Contact</h1>
     <form method="post" novalidate>
         {% csrf_token %}
         {% for field in form %}
@@ -85,7 +86,7 @@
         {% endfor %}
         <div class="form-action">
             <input type="submit" value="Submit">
-            <a href="{% url 'start_page' %}" class="cancel">Cancel</a>
+            <a href="{% url 'contact_details' pk=contact.pk %}" class="cancel">Cancel</a> <!-- Make sure the URL name is correct -->
         </div>
     </form>
     
@@ -94,3 +95,4 @@
     </div>
 </body>
 </html>
+
