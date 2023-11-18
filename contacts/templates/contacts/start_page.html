@@ -73,7 +73,7 @@
             {% for contact in contacts %}
             <tr>
                 <td class="contact-actions">
-                    <a href="{% url 'contact_detail' pk=contact.pk %}">Details</a> | 
+                    <a href="{% url 'contact_details' pk=contact.pk %}">Details</a> | 
                     <a href="{% url 'delete_contact' pk=contact.pk %}" onclick="return confirm('Are you sure?');">Delete</a>
                 <td>{{ contact.name }}</td>
                 <td>{{ contact.email }}</td>
